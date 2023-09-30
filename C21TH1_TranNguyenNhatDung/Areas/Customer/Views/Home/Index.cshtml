@@ -1,0 +1,36 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row mt-2">
+    @foreach (var x in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-2 product-item">
+                <div class="card-header">
+                    <h6>
+                        <a asp-action="Detail" asp-route-id="@x.Id">
+                            @x.Name
+                        </a>
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a asp-action="Detail" asp-route-id="@x.Id"> <img class="img-fluid" src="/@x.ImageUrl" /> </a>
+                    </h4>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-6">
+                            Price: <span class="price"> @x.Price </span> USD
+                        </div>
+                        <div class="col-6 text-end">
+                            <a asp-action="Detail" asp-route-id="@x.Id" class="btn btn-success"> <i class="bi bi-search">Chi Tiết</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
